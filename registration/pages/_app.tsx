@@ -10,7 +10,8 @@ import { Provider } from "react-redux"
 const theme = {
   colors: {
     blue: "#61A8F7",
-    black: "#292929"
+    black: "#292929",
+    grey: "#4F4F4F"
   }
 }
 
