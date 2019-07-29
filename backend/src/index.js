@@ -1,22 +1,35 @@
-const Koa = require('koa')
-const helmet = require('koa-helmet')
-const Router = require('koa-router')
-const jsonBody = require('koa-json-body')
-const bodyParser = require('koa-bodyparser')
-const dotenv = require('dotenv-safe')
+import Koa from 'koa'
+import helmet from 'koa-helmet'
+import Router from 'koa-router'
+import jsonBody from 'koa-json-body'
+import bodyParser from 'koa-bodyparser'
+import dotenv from 'dotenv-safe'
 
+import { postgresMiddleware, postgres } from '../database/postgres'
+import { schema, getAll } from '../database/model'
+
+//load env values
 dotenv.load()
 
 const app = new Koa()
 const router = new Router()
 const port = process.env.PORT
 
-router.get('/', async (ctx) => {
+app.use(bodyParser())
+app.use(postgresMiddleware(schema))
+
+//random test route
+router.get('/', async(ctx) => {
     ctx.status = 200
-    ctx.body = {'Message': 'Hello there'}
+    ctx.body = { "message": "hello there" }
 })
 
-app.use(bodyParser())
+//retrieve cars route
+router.get('/retrieve-cars', async(ctx) => {
+    const data = await getAll(postgres(ctx));
+    ctx.body = data
+})
+
 app.use(jsonBody())
 app.use(helmet())
 app.use(router.routes())

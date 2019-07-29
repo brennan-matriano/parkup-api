@@ -2,6 +2,8 @@ version: "3"
 services:
   pg:
     image: postgres:11.4-alpine
+    volumes:
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
     ports:
       - 5400:5400
     restart: on-failure
@@ -11,7 +13,7 @@ services:
       context: ./
       dockerfile: Dockerfile
     volumes:
-      - ./:/app/server
+      - ./:/app/backend
     ports:
       - 8000:8000
     depends_on:
