@@ -6,7 +6,8 @@ const Header = styled.header`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 56px;
+  padding-top: 56px;
+  margin-bottom: 56px;
 `
 
 const School = styled.span`

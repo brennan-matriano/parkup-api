@@ -1,1 +1,3 @@
-export default () => <h1>Hello</h1>
+import CSMOMemo from "../components/pages/CSMOMemo"
+
+export default () => <CSMOMemo />

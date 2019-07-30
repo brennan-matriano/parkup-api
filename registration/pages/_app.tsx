@@ -2,7 +2,7 @@ import App, { Container, AppInitialProps } from "next/app"
 import React from "react"
 import { ThemeProvider, createGlobalStyle } from "styled-components"
 import Head from "next/head"
-import Header from "../components/Header"
+import Layout from "../components/Layout"
 
 import withRematch from "../shared/withRematch"
 import { Provider } from "react-redux"
@@ -50,8 +50,9 @@ class MyApp extends App<ExtendedAppInitialProps> {
           <ThemeProvider theme={theme}>
             <>
               <GlobalStyles />
-              <Header />
-              <Component {...pageProps} />
+              <Layout>
+                <Component {...pageProps} />
+              </Layout>
             </>
           </ThemeProvider>
         </Provider>

@@ -14,3 +14,5 @@ export const initializeStore = (initialState = sampleInitialState) =>
       initialState
     }
   })
+
+// export type Store = typeof
