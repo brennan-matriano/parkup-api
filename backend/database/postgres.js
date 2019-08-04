@@ -1,11 +1,9 @@
 import PgAsync from 'pg-async'
 import once from 'once'
-import { drop, create } from './model'
 
 async function init(pg, schema) {
     await pg.transaction(async tx => {
         const { drop, create } = schema
-        // const { drop, create } = schema;
         if (drop) {
             for (const q of drop) {
                 await tx.query(q);
@@ -21,7 +19,7 @@ async function init(pg, schema) {
 
 export function postgresMiddleware(schema) {
     const pg = new PgAsync({
-        connectionString: "postgres://postgres@pg:5432/parkup"
+        connectionString: "postgres://postgres:postgres@pg:5432/parkup"
     })
 
     const setupSchema = once(init)

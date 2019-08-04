@@ -15,8 +15,7 @@ const app = new Koa()
 const router = new Router()
 const port = process.env.PORT
 
-app.use(bodyParser())
-app.use(postgresMiddleware(schema))
+app.use(bodyParser()).use(postgresMiddleware(schema))
 
 //random test route
 router.get('/', async(ctx) => {
