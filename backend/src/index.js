@@ -5,8 +5,10 @@ import jsonBody from 'koa-json-body'
 import bodyParser from 'koa-bodyparser'
 import dotenv from 'dotenv-safe'
 
-import { postgresMiddleware, postgres } from '../database/postgres'
-import { schema, getAll } from '../database/model'
+import { postgresMiddleware } from '../database/postgres'
+import { schema } from '../database/model'
+
+import { routes as registerRoute } from './routes/routes'
 
 //load env values
 dotenv.load()
@@ -17,18 +19,11 @@ const port = process.env.PORT
 
 app.use(bodyParser()).use(postgresMiddleware(schema))
 
-//random test route
-router.get('/', async(ctx) => {
-    ctx.status = 200
-    ctx.body = { "message": "hello there" }
-})
-
-//retrieve cars route
-router.get('/retrieve-cars', async(ctx) => {
-    const data = await getAll(postgres(ctx));
-    ctx.body = data
-})
-
+for (const routes of [
+    registerRoute
+]) {
+    routes(router)
+}
 app.use(jsonBody())
 app.use(helmet())
 app.use(router.routes())
