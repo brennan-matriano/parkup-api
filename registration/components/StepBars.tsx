@@ -28,6 +28,7 @@ const Bar = styled.span<BarProps>`
       : css`
           border: 1px solid #4f4f4f;
           color: ${props => props.theme.colors.grey};
+          font-weight: normal;
         `}
 
   position: relative;
@@ -39,7 +40,7 @@ const Bar = styled.span<BarProps>`
     position: absolute;
     width: 40px;
     right: -40px;
-    border: 1px solid ${props => props.theme.colors.black};
+    border: 2px solid #4f4f4f;
   }
 
   &:not(.no-margin) {

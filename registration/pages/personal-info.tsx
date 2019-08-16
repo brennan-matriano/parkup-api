@@ -1,1 +1,3 @@
-export default () => <h1>Hello</h1>
+import PersonalInfo from "../components/pages/PersonalInfo"
+
+export default () => <PersonalInfo />
