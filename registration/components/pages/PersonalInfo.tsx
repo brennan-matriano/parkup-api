@@ -2,10 +2,11 @@ import styled from "styled-components"
 import CustomToggle from "../CustomToggle"
 import { Button } from "../Button"
 
-const PersonalInfoWrapper = styled.div``
+const PersonalInfoWrapper = styled.div`
+`
 const Block = styled.div`
   padding: 56px 68px;
-  max-width: 1040px;
+  width: 1040px;
   margin: 0 auto;
   background-color: #ffffff;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
@@ -22,21 +23,29 @@ const Wrapper = styled.div``
 
 const InputLine = styled.div`
   display: flex;
+  margin-bottom: 24px;
 `
 
-const InputBlock = styled.div`
+type InputBlockProps = {
+  width?: string
+}
+const InputBlock = styled.div<InputBlockProps>`
   display: flex;
   flex-direction: column;
+  margin-right: 20px;
 
   > label {
     font-weight: 600;
     font-size: 12px;
+    margin-bottom: 8px;
   }
 
-  input {
+  input, select {
     border: 0.4px solid #acacac;
     box-sizing: border-box;
     border-radius: 4px;
+    padding: 8px 8px 8px 4px;
+    width: ${p => p.width};
   }
 `
 
@@ -47,27 +56,27 @@ export default function PersonalInfo() {
         <Block>
           <Wrapper>
             <InputLine>
-              <InputBlock>
+              <InputBlock width="177px">
                 <label htmlFor="ateneo-id">Ateneo ID Number</label>
                 <input type="text" id="ateneo-id" />
               </InputBlock>
             </InputLine>
             <InputLine>
-              <InputBlock>
+              <InputBlock width="245px">
                 <label htmlFor="first-name">First Name</label>
                 <input type="text" id="first-name" />
               </InputBlock>
-              <InputBlock>
+              <InputBlock width="245px">
                 <label htmlFor="middle-name">Middle Name</label>
                 <input type="text" id="middle-name" />
               </InputBlock>
-              <InputBlock>
+              <InputBlock width="245px">
                 <label htmlFor="last-name">Last Name</label>
                 <input type="text" id="last-name" />
               </InputBlock>
             </InputLine>
             <InputLine>
-              <InputBlock>
+              <InputBlock width="245px">
                 <label htmlFor="unit">Unit</label>
                 <select name="" id="unit">
                   <option value="">rando</option>
@@ -105,7 +114,7 @@ export default function PersonalInfo() {
                 <label>Gender</label>
                 <CustomToggle
                   id="male"
-                  onChange={() => {}}
+                  onChange={() => { }}
                   name="gender"
                   value="male"
                   marginRight={6}
@@ -114,7 +123,7 @@ export default function PersonalInfo() {
                 </CustomToggle>
                 <CustomToggle
                   id="female"
-                  onChange={() => {}}
+                  onChange={() => { }}
                   name="gender"
                   value="female"
                   marginRight={6}
