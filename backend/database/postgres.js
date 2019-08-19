@@ -23,10 +23,10 @@ export function postgresMiddleware(schema) {
     })
 
     const setupSchema = once(init)
-    return async(req, next) => {
+    return async(req, res, next) => {
         await setupSchema(pg, schema);
         req._postgres = pg;
-        return next()
+        return await next()
     }
 }
 

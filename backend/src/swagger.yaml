@@ -1,0 +1,163 @@
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: Parkup Sticker Registrations
+  license:
+    name: Proprietary
+basePath: /v1
+consumes:
+  - application/json
+produces:
+  - application/json
+schemes:
+  - http
+  - https
+paths:
+  /registrations:
+    get:
+      tags: 
+        - Registrations
+      operationId: retrieveRegistrations
+      description: Retrieve the registrations
+      responses:
+        '200':
+          description: Success
+          schema:
+            type: object
+        '400':
+          description: Bad Request
+          schema:
+            type: object
+    post:
+      tags: 
+        - Registrations
+      operationId: createRegistration
+      description: Create a registration
+      parameters:
+        - name: registration
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Registration'
+      responses:
+        '200':
+          description: Success
+          schema:
+            type: object
+        '400':
+          description: Bad Request
+          schema:
+            type: object
+  /registrations/{id}:
+    get:
+      tags:
+        - Registrations
+      operationId: getOne
+      description: Get 1 Registration record
+      parameters:
+        - in: path
+          name: id
+          type: integer
+          required: true
+      responses:
+        '200':
+          description: Success
+          schema:
+            type: object
+        '400':
+          description: Bad Request
+          schema:
+            type: object
+    delete:
+      tags:
+        - Registrations
+      operationId: deleteOne
+      description: Delete 1 Registration record
+      parameters:
+        - in: path
+          name: id
+          type: integer
+          required: true
+      responses:
+        '200':
+          description: Success
+          schema:
+            type: object
+        '400':
+          description: Bad Request
+          schema:
+            type: object
+    put:
+      tags: 
+        - Registrations
+      operationId: createRegistration
+      description: Create a registration
+      parameters:
+        - in: path
+          required: true
+          name: id
+          type: integer
+        - name: registration
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Registration'
+      responses:
+        '200':
+          description: Success
+          schema:
+            type: object
+        '400':
+          description: Bad Request
+          schema:
+            type: object     
+  
+      
+definitions:
+  Registration:
+    type: object
+    properties:
+      first_name:
+        type: string
+      last_name:
+        type: string
+      unit:
+        type: string
+      category:
+        type: string
+      year_level:
+        type: string
+      section:
+        type: string
+      birthdate:
+        type: string
+      gender:
+        type: string
+      address:
+        type: string
+      province:
+        type: string
+      city:
+        type: string
+      barangay:
+        type: string
+      zipcode:
+        type: integer
+      email:
+        type: string
+      landline:
+        type: string
+      mobile_number:
+        type: string
+      receipt_no:
+        type: string
+      receipt_date:
+        type: string
+      car_details:
+        type: object
+      driver_details:
+        type: object
+      sibling_details:
+        type: object
+      ls_idnum:
+        type: string

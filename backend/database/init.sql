@@ -1,4 +1,4 @@
-CREATE DATABASE parkup;
+-- CREATE DATABASE parkup;
 
 -- \connect parkup;
 
@@ -13,3 +13,6 @@ CREATE DATABASE parkup;
 --     special_plate VARCHAR(50) NOT NULL,
 --     engine_type VARCHAR(50) NOT NULL
 -- )
+
+-- INSERT INTO registrations(first_name, last_name, unit, category, year_level, section, birthdate, gender, address, province, city, barangay, zipcode, email, landline, mobile_number, receipt_no, receipt_date, car_details, driver_details, sibling_details, ls_idnum)
+-- VALUES('string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 1, 'string', 'string', 'string', 'string', 'string', '{}', '{}', '{}', 'string');

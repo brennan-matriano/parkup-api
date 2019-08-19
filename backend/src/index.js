@@ -1,33 +1,44 @@
-import Koa from 'koa'
-import helmet from 'koa-helmet'
-import Router from 'koa-router'
-import jsonBody from 'koa-json-body'
-import bodyParser from 'koa-bodyparser'
+import express from 'express'
+import swaggerUi from 'swagger-ui-express'
+import bodyParser from 'body-parser'
 import dotenv from 'dotenv-safe'
+import * as swagger from 'swagger2'
+import helmet from 'helmet'
 
 import { postgresMiddleware } from '../database/postgres'
 import { schema } from '../database/model'
 
-import { routes as registerRoute } from './routes/routes'
+import { routes as registerRoute } from './routes/registration'
 
 //load env values
 dotenv.load()
 
-const app = new Koa()
-const router = new Router()
-const port = process.env.PORT
-
+const app = express()
+const router = express.Router()
 app.use(bodyParser()).use(postgresMiddleware(schema))
 
+
+const spec = swagger.loadDocumentSync('./src/swagger.yaml') //check validity of swagger file
+if (!swagger.validateDocument(spec)) {
+	throw Error('swagger.yaml is not valid Swagger 2.0 schema.')
+}
+
+app.use('/v1', router)
+
+router.get('/swagger.json', async (ctx) => {
+    ctx.status = 200
+    ctx.body = spec
+})
 for (const routes of [
     registerRoute
 ]) {
     routes(router)
 }
-app.use(jsonBody())
+
+app.use("/", swaggerUi.serve);
+app.use("/", swaggerUi.setup(spec));
 app.use(helmet())
-app.use(router.routes())
-app.use(router.allowedMethods())
-app.listen(port, () => {
-    console.log(`Server is up on port ${port}`)
+
+app.listen(8000, () => {
+    console.log(`Server is up on port 8000`)
 })

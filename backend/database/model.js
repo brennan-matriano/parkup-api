@@ -1,6 +1,6 @@
 export const schema = {
     create: [`
-        CREATE TABLE registration(
+        CREATE TABLE registrations(
             id BIGSERIAL PRIMARY KEY,
             first_name VARCHAR(50) NOT NULL,
             last_name VARCHAR(50) NOT NULL,
@@ -25,35 +25,53 @@ export const schema = {
             sibling_details jsonb,
             ls_idnum VARCHAR(50) NOT NULL
         )`],
-    drop: [`DROP TABLE IF EXISTS registration`]
+    drop: [`DROP TABLE IF EXISTS registrations`]
 }
 
 export async function getAll(pg){
-    return pg.rows(`SELECT * FROM registration`)
+    return pg.rows(`SELECT * FROM registrations`)
 }
 
 export async function insert(pg, data){
-    const {make, model, color, reg_year, plate, conduction_no, special_plate, engine_type } = data
+    const { first_name, last_name, unit, category, year_level, section, birthdate, gender, 
+            address, province, city, barangay, zipcode, email, landline, mobile_number, 
+            receipt_no, receipt_date, car_details, driver_details, sibling_details, ls_idnum } = data;
+
     return pg.rows(
-        `INSERT INTO registration(make, model, color, reg_year, plate, conduction_no, special_plate, engine_type) 
-            VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9) returning id`,
-            make, model, color, reg_year, plate, conduction_no, special_plate, engine_type
-    )
+        `INSERT INTO registrations(first_name, last_name, unit, category, year_level, section, 
+                    birthdate, gender, address, province, city, barangay, zipcode, email, 
+                    landline, mobile_number, receipt_no, receipt_date, car_details, 
+                    driver_details, sibling_details, ls_idnum) 
+            VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, 
+                    $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22)`,
+            first_name, last_name, unit, category, year_level, section, birthdate, 
+            gender, address, province, city, barangay, zipcode, email, landline, mobile_number, 
+            receipt_no, receipt_date, car_details, driver_details, sibling_details, ls_idnum
+    );
 }
 
 export async function getOne(pg, id){
-    return pg.rows(`SELECT * FROM registration WHERE id = $1`, id)
+    return pg.rows(`SELECT * FROM registrations WHERE id = $1`, id)
 }
 
 export async function destroy(pg, id){
-    return pg.rows(`DELETE FROM registration WHERE id = $1`, id)
+    return pg.rows(`DELETE FROM registrations WHERE id = $1`, id)
 }
 
 export async function edit(pg, data, id){
-    const {make, model, color, reg_year, plate, conduction_no, special_plate, engine_type } = data
+    const { first_name, last_name, unit, category, year_level, section, birthdate, gender, 
+        address, province, city, barangay, zipcode, email, landline, mobile_number, 
+        receipt_no, receipt_date, car_details, driver_details, sibling_details, ls_idnum} = data
     return pg.rows(
-        `UPDATE registration set make = ($1), model = ($2), color = $(3), reg_year = $(4), plate = $(5), conduction_no = ($6), special_plate($7), engine_type($8) WHERE id = $(9)`,
-           make, model, color, reg_year, plate, conduction_no, special_plate, engine_type
+        `UPDATE registrations set first_name = ($1), last_name = ($2), unit = ($3), category = ($4),
+                 year_level = ($5), section = ($6), birthdate = ($7), gender = ($8), address = ($9),
+                 province = ($10), city = ($11), barangay = ($12), zipcode = ($13), email = ($14),
+                 landline = ($15), mobile_number = ($16), receipt_no = ($17), receipt_date = ($18),
+                 car_details = ($19), driver_details = ($20), sibling_details = ($21), ls_idnum = ($22)
+                 WHERE id = ($23)`,
+        first_name, last_name, unit, category, year_level, section, birthdate, gender, 
+        address, province, city, barangay, zipcode, email, landline, mobile_number, 
+        receipt_no, receipt_date, car_details, driver_details, sibling_details, ls_idnum, id
     )
 }
 
