@@ -38,7 +38,7 @@ class MyApp extends App<ExtendedAppInitialProps> {
     const { Component, pageProps, reduxStore } = this.props
 
     return (
-      <Container>
+      <>
         <Head>
           <title>Hello</title>
           <link
@@ -56,7 +56,7 @@ class MyApp extends App<ExtendedAppInitialProps> {
             </>
           </ThemeProvider>
         </Provider>
-      </Container>
+      </>
     )
   }
 }
