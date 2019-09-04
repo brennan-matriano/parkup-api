@@ -5,6 +5,7 @@ import path from 'path';
 import BaseRouter from './routes/Base';
 import cors from 'cors';
 
+
 require('./passport-config.ts');
 
 // Init express
@@ -18,8 +19,6 @@ app.use(express.urlencoded({extended: true}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(BaseRouter.path, BaseRouter.router);
-
-console.log(process.env)
 
 // Export express instance
 export default app;
