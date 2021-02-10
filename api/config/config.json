@@ -1,29 +1,29 @@
 
 {
   "development": {
-    "username": "admin",
-    "password": "##parkup-password-database",
-    "database": "park",
-    "host": "parkup.cgwn44lsreng.us-east-2.rds.amazonaws.com",
-    "dialect": "mysql",
+    "username": "",
+    "password": "",
+    "database": "",
+    "host": "",
+    "dialect": "",
     "operatorsAliases": false,
     "logging": false
   },
   "test": {
-    "username": "admin",
-    "password": "##parkup-password-database",
-    "database": "park",
-    "host": "parkup.cgwn44lsreng.us-east-2.rds.amazonaws.com",
-    "dialect": "mysql",
+    "username": "",
+    "password": "",
+    "database": "",
+    "host": "",
+    "dialect": "",
     "operatorsAliases": false,
     "logging": false
   },
   "production": {
-    "username": "admin",
-    "password": "##parkup-password-database",
-    "database": "park",
-    "host": "parkup.cgwn44lsreng.us-east-2.rds.amazonaws.com",
-    "dialect": "mysql",
+    "username": "",
+    "password": "",
+    "database": "",
+    "host": "",
+    "dialect": "",
     "operatorsAliases": false,
     "logging": false
   }
