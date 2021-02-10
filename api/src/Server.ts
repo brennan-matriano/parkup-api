@@ -6,7 +6,7 @@ import BaseRouter from './routes/Base';
 import cors from 'cors';
 
 
-require('./passport-config.ts');
+require('./passport-config');
 
 // Init express
 const app = express();
