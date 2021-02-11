@@ -9,10 +9,10 @@
     "test": "nodemon --config \"./util/nodemon.test.json\""
   },
   "_moduleAliases": {
-    "@daos": "dist/daos",
-    "@entities": "dist/entities",
-    "@shared": "dist/shared",
-    "@server": "dist/Server"
+    "@daos": "dist/src/daos",
+    "@entities": "dist/src/entities",
+    "@shared": "dist/src/shared",
+    "@server": "dist/src/Server"
   },
   "dependencies": {
     "aws-sdk": "^2.517.0",
@@ -36,6 +36,7 @@
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
+    "pg": "^8.5.1",
     "sequelize": "^5.22.3",
     "winston": "^3.2.1"
   },

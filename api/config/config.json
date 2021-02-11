@@ -5,7 +5,7 @@
     "password": "",
     "database": "",
     "host": "",
-    "dialect": "",
+    "dialect": "postgres",
     "operatorsAliases": false,
     "logging": false
   },
@@ -14,7 +14,7 @@
     "password": "",
     "database": "",
     "host": "",
-    "dialect": "",
+    "dialect": "postges",
     "operatorsAliases": false,
     "logging": false
   },
@@ -23,7 +23,7 @@
     "password": "",
     "database": "",
     "host": "",
-    "dialect": "",
+    "dialect": "postgres",
     "operatorsAliases": false,
     "logging": false
   }
