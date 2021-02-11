@@ -16,5 +16,4 @@ app.use(express_1.default.urlencoded({ extended: true }));
 app.use(cookie_parser_1.default());
 app.use(express_1.default.static(path_1.default.join(__dirname, 'public')));
 app.use(Base_1.default.path, Base_1.default.router);
-console.log(process.env);
 exports.default = app;
