@@ -3,7 +3,6 @@ import {db} from '../../../models';
 import { UserDao, IUserDao } from '../User/UserDao';
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
-import { ReservationDao, IReservationDao } from '../ListingReservation/ListingReservationDao';
 
 export interface IListingDao {
     Listing: any;
